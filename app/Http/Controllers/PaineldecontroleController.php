@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class PaineldecontroleController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -21,8 +21,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function paineldecontrole()
     {
-        return view('home');
+        return view('paineldecontrole');
     }
 }

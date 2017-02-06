@@ -11,6 +11,10 @@
 |
 */
 
+/*
+Operador Ternario => ?:
+*/
+
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
@@ -19,7 +23,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
-        'status' => 1,
+        'status' => rand(0,1),
         'remember_token' => str_random(10),
     ];
 });
