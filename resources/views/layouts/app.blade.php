@@ -19,6 +19,36 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    <style type="text/css">
+        .alert {
+            padding: 8px 35px 8px 14px;
+            margin-bottom: 18px;
+            color: #c09853;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+            background-color: #fcf8e3;
+            border: 1px solid #fbeed5;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+        }
+
+        .alert-heading {
+            color: inherit;
+        }
+
+        .alert .close {
+            position: relative;
+            top: -2px;
+            right: -21px;
+            line-height: 18px;
+        }
+
+        .alert-success {
+            color: #468847;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -59,11 +89,12 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ route('user_edit', Auth::user()->id) }}">Editar</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Sair
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
