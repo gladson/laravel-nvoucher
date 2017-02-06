@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\User;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class EditController extends Controller
 {
@@ -20,7 +21,7 @@ class EditController extends Controller
 
     public function __construct()
     {
-        $this->middleware('web');
+        $this->middleware('auth');
     }
 
     /**
