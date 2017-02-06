@@ -69,7 +69,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ url('/painel-de-controle') }}">Painel de controle</a>
+                        <a href="{{ route('painel_de_controle') }}">Painel de controle</a>
                     @else
                         <a href="{{ route('login') }}">Entrar</a>
                         <a href="{{ route('register') }}">Registrar</a>
@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    {{ config('app.name', 'Laravel') }}
                 </div>
 
                 

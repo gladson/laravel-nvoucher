@@ -8,12 +8,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Atualizar - {{ $user->name }}</div>
                 <div class="panel-body">
-                     @if (session('success'))
+                    @if (session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}
                         </div>
                     @endif
-                    {{ Form::model($user, array('route' => array('user_update', $user->id, 'class' => 'form-horizontal', 'role' => 'form'), 'method' => 'PUT')) }}
+
+                    {{ Form::model($user, array('route' => array('user_update', $user->id), 'method' => 'PUT', 'class' => 'form-horizontal', 'role' => 'form')) }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             {{ Form::label('name', 'Nome', array('class' => 'col-md-4 control-label', 'for' => 'name')) }}
@@ -42,7 +43,6 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <br>
                                 {{ Form::submit('Atualizar', array('class' => 'btn btn-primary')) }}
                             </div>
                         </div>

@@ -14,6 +14,8 @@ $ cd laravel-nvoucher
 $ composer install
 or
 $ composer update
+
+$ php artisan migrate
 ```
 
 ## Gerar Usuarios Fakes:
