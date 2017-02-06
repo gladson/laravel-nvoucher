@@ -37,4 +37,7 @@ Route::group(['middleware' => ['web']], function() {
 Route::get('usuario/{id}/editar', 'Auth\EditController@edit') -> name('user_edit');
 Route::put('usuario/{id}/atualizar', 'Auth\UpdateController@update') -> name('user_update');
 
+Route::resource('voucher', 'Voucher\VoucherController');
+
 Route::get('/painel-de-controle', 'PaineldecontroleController@paineldecontrole') -> name('painel_de_controle');
+

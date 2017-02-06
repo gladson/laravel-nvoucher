@@ -48,6 +48,7 @@
             background-color: #dff0d8;
             border-color: #d6e9c6;
         }
+        @yield('style')
     </style>
 </head>
 <body>
@@ -73,7 +74,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li><a href="{{ route('voucher.index') }}">Produtos</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
