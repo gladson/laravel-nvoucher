@@ -2,7 +2,19 @@
 
 # Voucher
 
+## Voucher
 
+***Caso tenha duvidas em instalar o php, composer, laravel, no windows [PHP-COMPOSER-LARAVEL](https://gist.github.com/gladson/bfd863cb88d66f84b2fde8929265553a#file-composer_laravel-md)
+
+### Instalação
+
+```shell
+$ git clone https://github.com/gladson/laravel-nvoucher.git
+$ cd laravel-nvoucher
+$ composer install
+or
+$ composer update
+```
 
 ## Gerar Usuarios Fakes:
 
