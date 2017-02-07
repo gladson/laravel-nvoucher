@@ -30,19 +30,19 @@ $ php artisan tinker
 
 1. (Node.js)[https://nodejs.org/en/] => instalação é moleza!!!
 
-´´´shell
+```shell
 	$ node -v
 	$ v7.5.0
 	$ npm -v
 	$ 4.1.2
-´´´
+```
 
 2. Browsersync é um modulo do Node.js
 
-´´´sheel
+```shell
 	$ npm install -g browser-sync
 	$ browser-sync start --open http://127.0.0.1:8000/ --browser firefox --files 'app' 'resources' 'routes' 'database' 'public' '.env'
-´´´
+```
 
 ## License
 
