@@ -28,7 +28,7 @@ $ php artisan tinker
 
 ### Instalação
 
-1. (Node.js)[https://nodejs.org/en/] => instalação é moleza!!!
+1. [Node.js](https://nodejs.org/en/) => instalação é moleza!!!
 
 ```shell
 	$ node -v
