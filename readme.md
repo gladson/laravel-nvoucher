@@ -32,9 +32,9 @@ $ php artisan tinker
 
 ```shell
 	$ node -v
-	$ v7.5.0
+	>>> v7.5.0
 	$ npm -v
-	$ 4.1.2
+	>>> 4.1.2
 ```
 
 2. Browsersync é um modulo do Node.js
