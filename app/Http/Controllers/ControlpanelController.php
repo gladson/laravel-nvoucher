@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PaineldecontroleController extends Controller
+class ControlpanelController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -21,8 +21,8 @@ class PaineldecontroleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function paineldecontrole()
+    public function control_panel()
     {
-        return view('paineldecontrole');
+        return view('voucher.control_panel');
     }
 }

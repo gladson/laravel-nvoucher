@@ -16,13 +16,32 @@ $ composer update
 $ php artisan migrate
 ```
 
-## Gerar Usuarios Fakes:
+### Gerar Usuarios Fakes:
 
 ```shell
 $ php artisan tinker
 	>>> Psy Shell v0.8.1 (PHP 7.0.4 ÔÇö cli) by Justin Hileman
 	>>> factory(App\User::class, 10)->create();
 ```
+
+## BrowserSync
+
+### Instalação
+
+1. (Node.js)[https://nodejs.org/en/] => instalação é moleza!!!
+´´´shell
+	$ node -v
+	$ v7.5.0
+	$ npm -v
+	$ 4.1.2
+´´´
+
+2. Browsersync é um modulo do Node.js
+´´´sheel
+	$ npm install -g browser-sync
+	$ browser-sync start --open http://127.0.0.1:8000/ --browser firefox --files 'app' 'resources' 'routes' 'database' 'public' '.env'
+´´´
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

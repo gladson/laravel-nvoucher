@@ -20,7 +20,7 @@ class VoucherController extends Controller
      */
     public function index()
     {
-        return view('voucher.lista_todos');
+        return view('voucher.list_all');
     }
 
     /**

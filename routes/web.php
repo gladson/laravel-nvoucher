@@ -39,5 +39,5 @@ Route::put('usuario/{id}/atualizar', 'Auth\UpdateController@update') -> name('us
 
 Route::resource('voucher', 'Voucher\VoucherController');
 
-Route::get('/painel-de-controle', 'PaineldecontroleController@paineldecontrole') -> name('painel_de_controle');
+Route::get('/painel-de-controle', 'ControlpanelController@control_panel') -> name('control_panel');
 

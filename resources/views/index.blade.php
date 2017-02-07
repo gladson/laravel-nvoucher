@@ -85,5 +85,7 @@
                 </div>-->            
             </div>
         </div>
+
+    @include('browsersync.browser_sync')
     </body>
 </html>
