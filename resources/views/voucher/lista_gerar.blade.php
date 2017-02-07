@@ -96,11 +96,8 @@
     letter-spacing: 8px;
     font-weight: bold;        
 }
-.price sup{
-    font-size: 1.5rem;    
-    position: absolute;    
-    top: 12px;
-    left: -30px;
+.price .r_p{
+    font-size: 4.5rem;    
 }
 .hint{
     font-style: italic;
@@ -162,7 +159,7 @@
                     
                     <div class="content">
                         <p class="price">
-                            <sup>R$</sup>
+                            <span class="r_p">R$</span>
                             <span>29</span>
                         </p>
                         <p>Produto do bom e do melhor...</p>
@@ -174,7 +171,7 @@
                 <div class="block cupom_two fl">
                     <div class="content">
                         <p class="price">
-                            <sup>R$</sup>
+                            <span class="r_p">R$</span>
                             <span>29</span>
                         </p>
                         <p>Produto do bom e do melhor...</p>
@@ -186,8 +183,8 @@
                 <div class="block cupom_one fl">
                     <div class="content">
                         <p class="price">
-                            <sup>R$</sup>
                             <span>29</span>
+                            <span class="r_p">%</span>
                         </p>
                         <p>Produto do bom e do melhor...</p>
                     </div>
@@ -198,7 +195,7 @@
                 <div class="block cupom_two fl">
                     <div class="content">
                         <p class="price">
-                            <sup>R$</sup>
+                            <span class="r_p">R$</span>
                             <span>29</span>
                         </p>
                         <p>Produto do bom e do melhor...</p>

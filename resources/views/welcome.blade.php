@@ -57,9 +57,6 @@
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
-                border-width: 1px;
-                border-style: solid;
-                border-color: black;
             }
             .m-b-md {
                 margin-bottom: 30px;
@@ -84,7 +81,7 @@
                     {{ config('app.name', 'Laravel') }}
                 </div>
                 <div class="links">
-                    <a href="{{ route('voucher.index') }}">Produtos</a>
+                    <a href="{{ route('voucher.index') }}" style="border-width: 1px;border-style: solid;border-color: black;">Produtos</a>
                 </div>            
             </div>
         </div>
