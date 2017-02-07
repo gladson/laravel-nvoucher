@@ -80,9 +80,9 @@
                 <div class="title m-b-md">
                     {{ config('app.name', 'Laravel') }}
                 </div>
-                <div class="links">
+                <!--<div class="links">
                     <a href="{{ route('voucher.index') }}" style="border-width: 1px;border-style: solid;border-color: black;">Produtos</a>
-                </div>            
+                </div>-->            
             </div>
         </div>
     </body>
