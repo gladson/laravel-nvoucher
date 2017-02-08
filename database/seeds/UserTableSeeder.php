@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UserSeeder extends Seeder
+class UserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
     {
         factory(App\User::class, 20)->create()->each(
 		    function($user) {
-		        factory(App\Post::class)->create(['user_id' => $user->id]);
+		        factory(App\Voucher::class)->create(['user_id' => $user->id]);
 		    }
 		);
     }
