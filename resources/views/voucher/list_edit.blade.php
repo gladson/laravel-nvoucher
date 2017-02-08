@@ -1,52 +1,63 @@
-<div class="container-fluid">
+@extends('layouts.app')
+@section('style')
+    .vertical_align{
+        vertical-align: middle;
+    }
+    .table > thead > tr > th {
+        text-align: center;
+        vertical-align: middle;
+    }
+    .table > tbody > tr > td {
+        text-align: center;
+        vertical-align: middle;
+    }
+@endsection
+@section('content')
+<div class="container">
     <div class="row">
-        <main class="col-sm-9 col-md-12 pt-3">
-            <br><br>
-            <h2>Section title</h2>
+        <div class="col-md-12">
             <div class="table-responsive">
-                <table class="table table-striped">
+                @if (count($vouchers) != 0)
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Header</th>
-                            <th>Header</th>
-                            <th>Header</th>
-                            <th>Header</th>
+                            <th>Chave</th>
+                            <th>Valor do desconto</th>
+                            <th>Descição</th>
+                            <th>Usuário</th>
+                            <th>Data de inicio</th>
+                            <th>Data do fim</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1,001</td>
-                            <td>Lorem</td>
-                            <td>ipsum</td>
-                            <td>dolor</td>
-                            <td>sit</td>
+                        @foreach ($vouchers as $voucher)
+                        <tr @if ($voucher->status == 0) class="success" @else class="warning" @endif >
+                            <th scope="row" style="vertical-align: middle !important;">{{ $voucher->id }}</th>
+                            <td>{{ strtoupper ($voucher->chave) }}</td>
+                            <td>
+                                @if ($voucher->desconto_tipo == 0)
+                                {{ $voucher->desconto_valor }} %
+                                @else
+                                R$ {{ $voucher->desconto_valor }}
+                                @endif
+                            </td>
+                            <td style="text-align: justify !important;">{{ $voucher->desconto_descricao }}</td>
+                            <td>{{ $voucher->user_id }}</td>
+                            <td>{{ Carbon\Carbon::parse($voucher->data_inicio)->format('d\\\m\\\Y') }}</td>
+                            <td>{{ Carbon\Carbon::parse($voucher->data_fim)->format('d\\\m\\\Y') }}</td>
                         </tr>
-                        <tr>
-                            <td>1,002</td>
-                            <td>amet</td>
-                            <td>consectetur</td>
-                            <td>adipiscing</td>
-                            <td>elit</td>
-                        </tr>
-                        <tr>
-                            <td>1,003</td>
-                            <td>Integer</td>
-                            <td>nec</td>
-                            <td>odio</td>
-                            <td>Praesent</td>
-                        </tr>
-                        <tr>
-                            <td>1,003</td>
-                            <td>libero</td>
-                            <td>Sed</td>
-                            <td>cursus</td>
-                            <td>ante</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
+                @else
+                <div class="alert alert-info alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    Desculpe, mas não foi cadastrado nenhum desconto.
+                </div>
+                @endif
             </div>
-        </main>
+        </div>
     </div>
 </div>
-
+@endsection
