@@ -38,6 +38,7 @@ Route::get('usuario/{id}/editar', 'Auth\EditController@edit') -> name('user_edit
 Route::put('usuario/{id}/atualizar', 'Auth\UpdateController@update') -> name('user_update');
 
 Route::resource('voucher', 'Voucher\VoucherController');
+Route::get('voucher/todos', 'Voucher\VoucherController@all') -> name('voucher_list_all');
 
 Route::get('/painel-de-controle', 'ControlpanelController@control_panel') -> name('control_panel');
 

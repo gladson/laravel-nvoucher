@@ -22,6 +22,7 @@ $ php artisan migrate
 $ php artisan tinker
 	>>> Psy Shell v0.8.1 (PHP 7.0.4 ÔÇö cli) by Justin Hileman
 	>>> factory(App\User::class, 10)->create();
+	>>> factory(App\Voucher::class, 20)->create();
 ```
 
 ## BrowserSync
