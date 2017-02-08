@@ -18,13 +18,13 @@ $ php artisan migrate
 
 ### Gerar Usuarios Fakes:
 
-1. Metodo agil (Recomendado)
+1 - Metodo agil (Recomendado)
 
 ```shell
 $ php artisan migrate:refresh --seed
 ```
 
-2. Metodo antigo
+2 - Metodo antigo
 
 ```shell
 $ php artisan tinker
@@ -37,7 +37,7 @@ $ php artisan tinker
 
 ### Instalação
 
-1. [Node.js](https://nodejs.org/en/) => instalação é moleza!!!
+1 - [Node.js](https://nodejs.org/en/) => instalação é moleza!!!
 
 ```shell
 	$ node -v
@@ -46,7 +46,7 @@ $ php artisan tinker
 	>>> 4.1.2
 ```
 
-2. Browsersync é um modulo do Node.js
+2 - Browsersync é um modulo do Node.js
 
 ```shell
 	$ npm install -g browser-sync
