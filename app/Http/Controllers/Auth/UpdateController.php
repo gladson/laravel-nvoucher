@@ -22,19 +22,33 @@ class UpdateController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255',
-        ]);
-    }
+    #protected function validator(array $data)
+    #{
+    #    return Validator::make($data, [
+    #        'name' => 'required|max:255',
+    #        'email' => 'required|email|max:255',
+    #    ]);
+    #}
 
     public function update(Request $request, $id)
 
     {
         // get the user
-        User::findOrFail($id)->update($request->all());
+        //User::findOrFail($id)->update($request->all());
+
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'required|min:6|confirmed'
+		]);
+        $user = User::findOrFail($id);
+        $input = $request->input();
+
+        if ($input['password'] != "") {
+
+           $input['password'] = bcrypt($input['password']);
+        }
+        $user->fill($input)->save();
 
         // show the edit form and pass the user
         return back()->with('success','Usuário atualizado com sucesso!');

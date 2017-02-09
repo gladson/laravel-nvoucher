@@ -38,7 +38,7 @@ $factory->define(App\Voucher::class, function ($faker) {
 	
 	$chave_gerada = substr(md5(uniqid(mt_rand(1,3)+mt_rand(1,3))), 0, 10);
 
-	$chave_todos = App\Voucher::all();
+	#$chave_todos = App\Voucher::all();
 	#$chave_filtro = $chave_todos->filter(function($item, $chave_gerada) {
 	#    return $item->chave == $chave_gerada;
 	    //echo "{$item->chave}<==>";
@@ -48,17 +48,20 @@ $factory->define(App\Voucher::class, function ($faker) {
 	#$chave_check = App\Voucher::where('chave', $chave_gerada)->first();
 	#$chave_check = App\Voucher::where('chave')->first();
 
-	$chave_check = App\Voucher::where('chave', '=', $chave_gerada)->get();
-	echo "{$chave_check->first()}<==>";
-    if(!$chave_check){
-        $exists = false;
-        echo "False";
-        $chave_gerada = substr(md5(uniqid(mt_rand(1,4)+mt_rand(1,4)+mt_rand(1,4)+mt_rand(1,4))), 0, 10);
-    } else {
-    	$exists = true;
-    	echo "True";
+	$chave_todos = App\Voucher::with('chave')->pluck('chave');
+
+	echo "{$chave_todos}<==>";
+	#$chave_check = App\Voucher::where('chave', '=', $chave_gerada)->get();
+	#echo "{$chave_check->first()}<==>";
+    #if(!$chave_check){
+    #    $exists = false;
+    #    echo "False";
+    #    $chave_gerada = substr(md5(uniqid(mt_rand(1,4)+mt_rand(1,4)+mt_rand(1,4)+mt_rand(1,4))), 0, 10);
+    #} else {
+    # 	$exists = true;
+    #	echo "True";
     	#$chave_gerada = substr(md5(uniqid(mt_rand(1,6)+mt_rand(1,2)+mt_rand(1,3)+mt_rand(1,6)+mt_rand(1,2)+mt_rand(1,3))), 0, 10);
-    }
+    #}
 
     #echo "{$chave_gerada}<==>";
 
