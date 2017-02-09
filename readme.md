@@ -10,9 +10,11 @@
 	</a>
 </p>
 
+### Instalação (PHP-COMPOSER-LARAVEL)
+
 ***Caso tenha duvidas em instalar o php, composer, laravel, no windows [PHP-COMPOSER-LARAVEL](https://gist.github.com/gladson/bfd863cb88d66f84b2fde8929265553a#file-composer_laravel-md)***
 
-### Instalação
+### Instalação (Projeto)
 
 ```shell
 $ git clone https://github.com/gladson/laravel-nvoucher.git
