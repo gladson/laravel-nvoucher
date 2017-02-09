@@ -2,7 +2,11 @@
 
 # Voucher
 
-[VOUCHER-HEROKU](http://nvoucher.herokuapp.com/)
+<p align="center">
+	<a href="http://nvoucher.herokuapp.com/">
+		<img height="64" width="240" src="http://i.imgur.com/3Vex140.png">
+	</a>
+</p>
 
 ***Caso tenha duvidas em instalar o php, composer, laravel, no windows [PHP-COMPOSER-LARAVEL](https://gist.github.com/gladson/bfd863cb88d66f84b2fde8929265553a#file-composer_laravel-md)***
 
