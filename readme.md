@@ -18,13 +18,18 @@ $ php artisan migrate
 
 ### Gerar Usuarios Fakes:
 
-1 - Metodo agil (Recomendado)
+1 - Método agil (Recomendado)
 
 ```shell
 $ php artisan migrate:refresh --seed
 ```
 
-2 - Metodo antigo
+***Caso haja algum erro:***
+```shell
+$ composer dump-autoload
+```
+
+2 - Método antigo
 
 ```shell
 $ php artisan tinker
@@ -34,6 +39,8 @@ $ php artisan tinker
 ```
 
 ## BrowserSync
+
+Sincroniza o código e as ações de vários navegadores simultaneamente.
 
 ### Instalação
 
