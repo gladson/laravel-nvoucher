@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVoucherTable extends Migration
+class CreateVoucherUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateVoucherTable extends Migration
      */
     public function up()
     {
-        Schema::create('voucher', function (Blueprint $table) {
+        Schema::create('voucher_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('desconto_valor');
-            $table->string('desconto_tipo');
-            $table->longText('desconto_descricao')->nullable();
+            $table->string('chave')->unique();
             $table->integer('user_id')->nullable()->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('voucher_id')->nullable()->unsigned();
+            $table->foreign('voucher_id')->references('id')->on('voucher');
             $table->tinyInteger('status')->default(0);
-            $table->date('data_inicio');
-            $table->date('data_fim');
             $table->timestamps();
         });
     }
@@ -34,9 +32,6 @@ class CreateVoucherTable extends Migration
      */
     public function down()
     {
-        #Schema::table('voucher', function (Blueprint $table) {
-            //
-        #});
-        Schema::dropIfExists('voucher');
+        Schema::dropIfExists('voucher_user');
     }
 }

@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
-class Voucher extends Model
+class VoucherUser extends Model
 {
     use Notifiable;
 
@@ -15,9 +15,8 @@ class Voucher extends Model
      * @var array
      */
     protected $fillable = [
-        'desconto_valor', 'desconto_tipo', 'desconto_descricao', 
-        'user_id', 'data_inicio', 'data_fim',
+        'chave', 'user_id', 'voucher_id',
     ];
 
-    public $table = "voucher";
+    public $table = "voucher_user";
 }
