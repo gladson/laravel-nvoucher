@@ -41,6 +41,9 @@
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
+                        @if (Auth::check() && Auth::user()->IsAdmin())
+                        - Admin
+                        @endif
                     </a>
                 </div>
 

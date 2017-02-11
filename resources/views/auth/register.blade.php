@@ -60,22 +60,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label class="control-label">
-                                        <input type="hidden" name="status" value="0">
-                                        <input id="status" type="checkbox" name="status" value="1"> Status
-                                    </label>
-                                    @if ($errors->has('status'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('status') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('proteger', ['middleware' => ['auth', 'admin'], function() {
+    return "Esta pagina requer usuario com regras de admin";
+}]);
+
 #Auth::routes();
 
 Route::group(['middleware' => ['web']], function() {
