@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Voucher;
 
+use DB;
 use App\Voucher;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -32,11 +34,13 @@ class VoucherController extends Controller
     public function index()
     {
         $id_user = Auth::user()->getId();
-        echo $id_user;
-        $vouchers = Voucher::all();
-        echo $vouchers;
-        #$vouchers = Voucher::where('user_id', '=', $id_user)->firstOrFail();
-        dd($vouchers);
+        //echo $id_user;
+        #$vouchers = Voucher::all();
+        
+        //$vouchers = DB::table('voucher')->where('user_id', '=', $id_user)->get();
+        $vouchers = Voucher::where('user_id', '=', $id_user)->get();
+        //dd($vouchers);
+        //echo $vouchers;
 
         return view('voucher.list_edit', compact('vouchers'));
     }
