@@ -15,12 +15,12 @@
 @section('content')
 <div class="container">
     <div class="page-header">
-        <h1>Todos os vouchers</h1>
+        <h1>Todos as chaves</h1>
     </div>
     <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
-                @if (count($vouchers) != 0)
+                @if (count($keys) != 0)
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -36,7 +36,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($vouchers as $obj)
+                        @foreach ($keys as $obj)
                         <tr @if ($obj->status == 0) class="success" @else class="warning" @endif >
                             <th scope="row" style="vertical-align: middle !important;">
                                 {{ $obj->id }}

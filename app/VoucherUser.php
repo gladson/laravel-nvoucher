@@ -9,6 +9,18 @@ class VoucherUser extends Model
 {
     use Notifiable;
 
+    # Define o relacionamento - Importante
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    # Define o relacionamento - Importante
+    public function voucher()
+    {
+        return $this->belongsTo('App\Voucher');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
