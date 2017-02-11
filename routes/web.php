@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('proteger', ['middleware' => ['auth', 'admin'], function() {
+    return "Esta pagina requer usuario com regras de admin";
+}]);
+
 #Auth::routes();
 
 Route::group(['middleware' => ['web']], function() {
@@ -32,10 +36,12 @@ Route::group(['middleware' => ['web']], function() {
     Route::post('usuario/senha/email', ['as' => 'password.email', 'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail']);
     Route::get('usuario/senha/refazer/{token}', ['as' => 'password.reset.token', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
     Route::post('usuario/senha/refazer', ['as' => 'password.reset.post', 'uses' => 'Auth\ResetPasswordController@reset']);
+
+    Route::get('usuario/{id}/editar', 'Auth\EditController@edit') -> name('user_edit');
+    Route::put('usuario/{id}/atualizar', 'Auth\UpdateController@update') -> name('user_update');
 });
 
-Route::get('usuario/{id}/editar', 'Auth\EditController@edit') -> name('user_edit');
-Route::put('usuario/{id}/atualizar', 'Auth\UpdateController@update') -> name('user_update');
+
 
 Route::resource('voucher', 'Voucher\VoucherController');
 Route::get('voucher/todos', 'Voucher\VoucherController@all') -> name('voucher_list_all');

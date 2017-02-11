@@ -6,6 +6,8 @@ use App\Voucher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Auth;
+
 class VoucherController extends Controller
 {
     public function __construct()
@@ -29,7 +31,13 @@ class VoucherController extends Controller
      */
     public function index()
     {
+        $id_user = Auth::user()->getId();
+        echo $id_user;
         $vouchers = Voucher::all();
+        echo $vouchers;
+        #$vouchers = Voucher::where('user_id', '=', $id_user)->firstOrFail();
+        dd($vouchers);
+
         return view('voucher.list_edit', compact('vouchers'));
     }
 

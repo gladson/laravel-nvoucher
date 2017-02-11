@@ -50,9 +50,8 @@ class UpdateController extends Controller
         }
         $user->fill($input)->save();
 
-        // show the edit form and pass the user
-        return back()->with('success','Usuário atualizado com sucesso!');
-
+        #return back()->with('success','Usuário atualizado com sucesso!');
+        return redirect()->route('user_edit', ['id' => $id])->with('success','Usuário atualizado com sucesso!');
     }
 
 }

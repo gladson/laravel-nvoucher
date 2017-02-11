@@ -21,8 +21,8 @@ class CreateVoucherTable extends Migration
             $table->integer('user_id')->nullable()->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->tinyInteger('status')->default(0);
-            $table->date('data_inicio');
-            $table->date('data_fim');
+            $table->dateTime('data_inicio');
+            $table->dateTime('data_fim');
             $table->timestamps();
         });
     }

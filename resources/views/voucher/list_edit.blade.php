@@ -14,6 +14,9 @@
 @endsection
 @section('content')
 <div class="container">
+    <div class="page-header">
+        <h1>List All</h1>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
@@ -22,7 +25,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Chave</th>
+                            <!-- <th>Chave</th> -->
                             <th>Valor do desconto</th>
                             <th>Descição</th>
                             <th>Usuário</th>
@@ -34,7 +37,7 @@
                         @foreach ($vouchers as $voucher)
                         <tr @if ($voucher->status == 0) class="success" @else class="warning" @endif >
                             <th scope="row" style="vertical-align: middle !important;">{{ $voucher->id }}</th>
-                            <td>{{ strtoupper ($voucher->chave) }}</td>
+                            <!-- <td>{{ strtoupper ($voucher->chave) }}</td> -->
                             <td>
                                 @if ($voucher->desconto_tipo == 0)
                                 {{ $voucher->desconto_valor }} %
@@ -43,9 +46,11 @@
                                 @endif
                             </td>
                             <td style="text-align: justify !important;">{{ $voucher->desconto_descricao }}</td>
-                            <td>{{ $voucher->user_id }}</td>
-                            <td>{{ Carbon\Carbon::parse($voucher->data_inicio)->format('d\\\m\\\Y') }}</td>
-                            <td>{{ Carbon\Carbon::parse($voucher->data_fim)->format('d\\\m\\\Y') }}</td>
+                            
+                            <td>{{ $voucher->user->name }}</td>
+                            
+                            <td>{{ Carbon\Carbon::parse($voucher->data_inicio)->format('d\\\m\\\Y\ - H:i:s') }}</td>
+                            <td>{{ Carbon\Carbon::parse($voucher->data_fim)->format('d\\\m\\\Y - H:i:s') }}</td>
                         </tr>
                         @endforeach
                     </tbody>
