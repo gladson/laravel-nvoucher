@@ -42,7 +42,7 @@ Route::get('{id}/editar', 'Auth\EditController@edit') -> name('user_edit');
 Route::put('{id}/atualizar', 'Auth\UpdateController@update') -> name('user_update');
 
 Route::resource('voucher', 'Voucher\VoucherController');
-Route::get('voucher/chaves', 'Voucher\VoucherController@list_keys') -> name('list_keys');
+Route::get('voucher/chaves', 'Voucher\VoucherController@list_keys') -> name('voucher_list_keys');
 
 Route::get('/painel-de-controle', 'ControlpanelController@control_panel') -> name('control_panel');
 
