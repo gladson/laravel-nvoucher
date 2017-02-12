@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Voucher;
 
 use DB;
 use App\Voucher;
+use App\VoucherUser;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,6 +18,22 @@ class VoucherController extends Controller
         $this->middleware('auth');
     }
     
+    
+    public function index()
+    {
+        if (Auth::check() && Auth::user()->IsAdmin()) {
+            $vouchers = Voucher::all();
+        } else {
+            $id_user = Auth::user()->getId();
+            //echo $id_user;
+            //$vouchers = DB::table('voucher')->where('user_id', '=', $id_user)->get();
+            $vouchers = Voucher::where('user_id', '=', $id_user)->get();
+            //dd($vouchers);
+            //echo $vouchers;
+        }
+        return view('voucher.list_all', compact('vouchers'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -33,27 +50,13 @@ class VoucherController extends Controller
             //dd($keys);
             //echo $keys;
         }
-        return view('voucher.list_keys');
+        return view('voucher.list_keys', compact('keys'));
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        if (Auth::check() && Auth::user()->IsAdmin()) {
-            $vouchers = Voucher::all();
-        } else {
-            $id_user = Auth::user()->getId();
-            //echo $id_user;
-            //$vouchers = DB::table('voucher')->where('user_id', '=', $id_user)->get();
-            $vouchers = Voucher::where('user_id', '=', $id_user)->get();
-            //dd($vouchers);
-            //echo $vouchers;
-        }
-        return view('voucher.list_all', compact('vouchers'));
-    }
 
     /**
      * Show the form for creating a new resource.

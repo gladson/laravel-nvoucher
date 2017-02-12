@@ -25,7 +25,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <!-- <th>Chave</th> -->
+                            <th>Chave</th>
                             <th>Valor do desconto</th>
                             <th>Descição</th>
                             @if (Auth::check() && Auth::user()->IsAdmin())
@@ -42,17 +42,17 @@
                                 {{ $obj->id }}
                             </th>
 
-                            <!-- <td>{{ strtoupper ($obj->chave) }}</td> -->
+                            <td>{{ strtoupper ($obj->chave) }}</td>
 
                             <td>
-                                @if ($obj->desconto_tipo == 0)
-                                {{ $obj->desconto_valor }} %
+                                @if ($obj->voucher->desconto_tipo == 0)
+                                {{ $obj->voucher->desconto_valor }} %
                                 @else
-                                R$ {{ $obj->desconto_valor }}
+                                R$ {{ $obj->voucher->desconto_valor }}
                                 @endif
                             </td>
                             <td style="text-align: justify !important;">
-                                {{ $obj->desconto_descricao }}
+                                {{ $obj->voucher->desconto_descricao }}
                             </td>
                             
                             @if (Auth::check() && Auth::user()->IsAdmin())

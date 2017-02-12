@@ -81,7 +81,7 @@
                     {{ config('app.name', 'Laravel') }}
                 </div>
                 <!--<div class="links">
-                    <a href="{{ route('voucher.index') }}" style="border-width: 1px;border-style: solid;border-color: black;">Produtos</a>
+                    <a href="{{ route('voucher_list_all') }}" style="border-width: 1px;border-style: solid;border-color: black;">Produtos</a>
                 </div>-->            
             </div>
         </div>
