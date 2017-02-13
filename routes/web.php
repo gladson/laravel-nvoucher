@@ -44,5 +44,7 @@ Route::put('{id}/atualizar', 'Auth\UpdateController@update') -> name('user_updat
 #Route::resource('voucher', 'Voucher\VoucherController');
 Route::get('voucher', 'Voucher\VoucherController@index') -> name('voucher_list_all');
 Route::get('voucher/chaves', 'Voucher\VoucherController@list_keys') -> name('voucher_list_keys');
+Route::get('voucher/adicionar', 'Voucher\VoucherController@create_voucher') -> name('voucher_list_add');
+Route::post('voucher/adicionar', 'Voucher\VoucherController@store_voucher') -> name('voucher_list_add_post');
 
 Route::get('/painel-de-controle', 'ControlpanelController@control_panel') -> name('control_panel');

@@ -22,7 +22,7 @@ class Voucher extends Model
      */
     protected $fillable = [
         'desconto_valor', 'desconto_tipo', 'desconto_descricao', 
-        'user_id', 'data_inicio', 'data_fim',
+        'data_inicio', 'data_fim',
     ];
 
     public $table = "voucher";

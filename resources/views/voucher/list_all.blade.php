@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('style')
+<style type="text/css">
     .vertical_align{
         vertical-align: middle;
     }
@@ -11,11 +12,22 @@
         text-align: center;
         vertical-align: middle;
     }
+</style>
 @endsection
 @section('content')
 <div class="container">
     <div class="page-header">
-        <h1>Todos os vouchers</h1>
+        <div class="row">
+            <div class="col-md-5">
+                <h1>Todos os vouchers</h1>
+            </div>
+            <div class="col-md-5"></div>
+            <div class="col-md-2" style="text-align: right;">
+                <a href="{{ route('voucher_list_add') }}" class="btn btn-primary" style="margin-top: 22px;margin-bottom: 11px;">
+                    Add Voucher
+                </a>
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-12">

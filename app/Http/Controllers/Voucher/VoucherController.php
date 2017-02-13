@@ -53,19 +53,13 @@ class VoucherController extends Controller
         return view('voucher.list_keys', compact('keys'));
     }
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create_voucher()
     {
-        //
+        return view('voucher.list_add');
     }
 
     /**
@@ -74,9 +68,30 @@ class VoucherController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store_voucher(Request $request)
     {
-        //
+        $this->validate($request, [
+            'desconto_valor' => 'required|max:255',
+            'desconto_tipo' => 'nullable',
+            'desconto_descricao' => 'required',
+            'user_id' => 'required',
+            'data_inicio' => 'required|date',
+            'data_fim' => 'required|date'
+        ]);
+
+        dd($request);
+
+        $create_voucher = new Voucher;
+        $create_voucher->desconto_valor = $request->desconto_valor;
+        $create_voucher->desconto_tipo = $request->desconto_tipo;
+        $create_voucher->desconto_descricao = $request->desconto_descricao;
+        $create_voucher->user_id = $request->user_id;
+        $create_voucher->data_inicio = $request->data_inicio;
+        $create_voucher->data_fim = $request->data_fim;
+        $create_voucher->save();
+
+        return view('voucher.list_add');
+        #return redirect()->route('voucher_list_add_post')->with('success','Voucher criado com sucesso!');
     }
 
     /**
@@ -98,7 +113,7 @@ class VoucherController extends Controller
      */
     public function edit(Voucher $voucher)
     {
-        //
+        return view('voucher.list_edit');
     }
 
     /**

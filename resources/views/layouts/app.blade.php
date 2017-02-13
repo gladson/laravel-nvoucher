@@ -19,10 +19,7 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
-    <style type="text/css">
-        
-        @yield('style')
-    </style>
+    @yield('style')
 </head>
 <body>
     <div id="app">
@@ -96,6 +93,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('/js/app.js') }}"></script>
+    @yield('script')
     @include('browsersync.browser_sync')
 </body>
 </html>
