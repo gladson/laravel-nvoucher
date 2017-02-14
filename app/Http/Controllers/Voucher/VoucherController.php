@@ -96,7 +96,6 @@ class VoucherController extends Controller
         $create_voucher->data_fim = $request->Input(['data_fim']);
         $create_voucher->save();
         
-        
         #echo $create_voucher;
         #dd($create_voucher);
 

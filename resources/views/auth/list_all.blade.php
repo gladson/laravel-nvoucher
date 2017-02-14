@@ -18,64 +18,42 @@
 <div class="container">
     <div class="page-header">
         <div class="row">
-            <div class="col-md-5">
-                <h1>Todos os vouchers</h1>
-            </div>
-            <div class="col-md-5"></div>
-            <div class="col-md-2" style="text-align: right;">
-                <a href="{{ route('voucher_list_add') }}" class="btn btn-primary" style="margin-top: 22px;margin-bottom: 11px;">
-                    Add Voucher
-                </a>
+            <div class="col-md-12">
+                <h1>Todos os usuários</h1>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
-                @if (count($vouchers) != 0)
+                @if (count($user_all) != 0)
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <!-- <th>Chave</th> -->
-                            <th>Valor do desconto</th>
-                            <th>Descição</th>
-                            @if (Auth::check() && Auth::user()->IsAdmin())
-                            <th>Usuário</th>
-                            @endif
-                            <th>Data de inicio</th>
-                            <th>Data do fim</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Admin</th>
+                            <th>Data de criação</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($vouchers as $obj)
+                        @foreach ($user_all as $obj)
                         <tr @if ($obj->status == 1) class="success" @else class="warning" @endif >
                             <th scope="row" style="vertical-align: middle !important;">
                                 {{ $obj->id }}
                             </th>
 
-                            <!-- <td>{{ strtoupper ($obj->chave) }}</td> -->
+                            <td>{{ strtoupper ($obj->name) }}</td>
 
                             <td>
-                                @if ($obj->desconto_tipo == 0)
-                                {{ $obj->desconto_valor }} %
-                                @else
-                                R$ {{ $obj->desconto_valor }}
-                                @endif
-                            </td>
-                            <td style="text-align: justify !important;">
-                                {{ $obj->desconto_descricao }}
+                                {{ $obj->email }}
                             </td>
                             
-                            @if (Auth::check() && Auth::user()->IsAdmin())
-                            <td>{{ $obj->user->name }}</td>
-                            @endif
+                            <td>{{ $obj->admin }}</td>
                             
                             <td>
-                                {{ Carbon\Carbon::parse($obj->data_inicio)->format('d\\\m\\\Y\ - H:i:s') }}
-                            </td>
-                            <td>
-                                {{ Carbon\Carbon::parse($obj->data_fim)->format('d\\\m\\\Y - H:i:s') }}
+                                {{ Carbon\Carbon::parse($obj->created_at)->format('d\\\m\\\Y\ - H:i:s') }}
                             </td>
                         </tr>
                         @endforeach
