@@ -49,7 +49,7 @@
                     </thead>
                     <tbody>
                         @foreach ($vouchers as $obj)
-                        <tr @if ($obj->status == 0) class="success" @else class="warning" @endif >
+                        <tr @if ($obj->status == 1) class="success" @else class="warning" @endif >
                             <th scope="row" style="vertical-align: middle !important;">
                                 {{ $obj->id }}
                             </th>

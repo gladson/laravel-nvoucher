@@ -70,28 +70,37 @@ class VoucherController extends Controller
      */
     public function store_voucher(Request $request)
     {
+        
         $this->validate($request, [
-            'desconto_valor' => 'required|max:255',
-            'desconto_tipo' => 'nullable',
+            'desconto_valor' => 'required|numeric',
             'desconto_descricao' => 'required',
-            'user_id' => 'required',
             'data_inicio' => 'required|date',
             'data_fim' => 'required|date'
         ]);
 
-        dd($request);
+        $user_id = Auth::user()->getId();
 
-        $create_voucher = new Voucher;
-        $create_voucher->desconto_valor = $request->desconto_valor;
-        $create_voucher->desconto_tipo = $request->desconto_tipo;
-        $create_voucher->desconto_descricao = $request->desconto_descricao;
-        $create_voucher->user_id = $request->user_id;
-        $create_voucher->data_inicio = $request->data_inicio;
-        $create_voucher->data_fim = $request->data_fim;
+        if ($request->Input(['desconto_tipo']) == null) {
+            $desconto_tipo = '0';
+        } else {
+            $desconto_tipo = '1';
+        };
+
+        $create_voucher = new Voucher();
+        $create_voucher->desconto_valor = $request->Input(['desconto_valor']);
+        $create_voucher->desconto_tipo = $desconto_tipo;
+        $create_voucher->desconto_descricao = $request->Input(['desconto_descricao']);
+        $create_voucher->user_id = $user_id;
+        $create_voucher->status = '1';
+        $create_voucher->data_inicio = $request->Input(['data_inicio']);
+        $create_voucher->data_fim = $request->Input(['data_fim']);
         $create_voucher->save();
+        
+        
+        #echo $create_voucher;
+        #dd($create_voucher);
 
-        return view('voucher.list_add');
-        #return redirect()->route('voucher_list_add_post')->with('success','Voucher criado com sucesso!');
+        return redirect()->route('voucher_list_add')->with('success','Voucher criado com sucesso!');
     }
 
     /**

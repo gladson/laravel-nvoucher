@@ -45,17 +45,26 @@
             separator : '<br> para <br>',
             getValue: function()
             {
-                if ($('#data_inicio').val() && $('#data_fim').val() )
-                    return $('#data_inicio').val() + ' para ' + $('#data_fim').val();
+                if ($('#data_inicio_rp').val() && $('#data_fim_rp').val() )
+                    return $('#data_inicio_rp').val() + ' para ' + $('#data_fim_rp').val();
                 else
                     return '';
             },
             setValue: function(s,s1,s2)
             {
-                $('#data_inicio').val(s1);
-                $('#data_fim').val(s2);
+                $('#data_inicio_rp').val(s1);
+                $('#data_fim_rp').val(s2);
+
+                console.log(s1);
+                var s1_moment = moment(s1, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
+                $('#data_inicio').val(s1_moment);
+
+                console.log(s2);
+                var s2_moment = moment(s2, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
+                $('#data_fim').val(s2_moment);
             },
-            format: 'dddd Do MMM, YYYY - HH:mm[hs]',
+            //format: 'dddd Do MMM, YYYY - HH:mm[hs]',
+            format: 'D/MM/YYYY HH:mm:ss',
             time: {
                 enabled: true
             },
@@ -65,15 +74,17 @@
     
     $(document).ready(function() {
         
-        $('#desconto_tipo_checkbox_input').change(function() {
+        $('#desconto_tipo').change(function() {
             if($(this).prop('checked') == true){
                 console.log(true);
                 $("#desconto_tipo_checkbox").after('<span class="input-group-addon" id="desconto_tipo_checkbox_check_0">R$</span>');
                 $('#desconto_tipo_checkbox_check_1').remove();
+                $('#desconto_tipo').val(0);
             } else {
                 console.log(false);
                 $("#desconto_valor").after('<span class="input-group-addon" id="desconto_tipo_checkbox_check_1">%</span>');
                 $('#desconto_tipo_checkbox_check_0').remove();
+                $('#desconto_tipo').val(1);
             };
         });
         $("#desconto_tipo_checkbox").after('<span class="input-group-addon" id="desconto_tipo_checkbox_check_0">R$</span>');
@@ -106,7 +117,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                    <span class="input-group-addon" id="desconto_tipo_checkbox">
-                                        <input type="checkbox" checked id="desconto_tipo_checkbox_input">
+                                        <input type="checkbox" checked id="desconto_tipo" name="desconto_tipo" value="0">
                                    </span>
                                    
                                    <input id="desconto_valor" type="text" class="form-control" name="desconto_valor" value="{{ old('desconto_valor') }}" required autofocus>
@@ -132,9 +143,11 @@
 
                             <div class="col-md-6">
                                 <div id="campos-datas-inicio-fim">
-                                    <input class="form-control" id="data_inicio" value="{{ old('data_inicio') }}"> 
+                                    <input id="data_inicio_rp" type="text" class="form-control" value="">
+                                    <input type="hidden" id="data_inicio" name="data_inicio" value="{{ old('data_inicio') }}">
                                     para 
-                                    <input class="form-control" id="data_fim" value="{{ old('data_fim') }}">
+                                    <input id="data_fim_rp" type="text" class="form-control" value="">
+                                    <input type="hidden" id="data_fim" name="data_fim" value="{{ old('data_fim') }}">
                                 </div>
 
                                 @if ($errors->has('data_inicio'))
