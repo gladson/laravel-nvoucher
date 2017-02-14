@@ -36,14 +36,21 @@ Route::group(['middleware' => ['web']], function() {
     Route::post('senha/email', ['as' => 'password.email', 'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail']);
     Route::get('senha/refazer/{token}', ['as' => 'password.reset.token', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
     Route::post('senha/refazer', ['as' => 'password.reset.post', 'uses' => 'Auth\ResetPasswordController@reset']);
+
+    Route::get('{id}/editar', 'Auth\EditController@edit') -> name('user_edit');
+    Route::put('{id}/atualizar', 'Auth\UpdateController@update') -> name('user_update');
+
+    Route::get('{id}/atualizar/status', 'Auth\AllController@user_update_status') -> name('user_update_status');
+
+    Route::get('usuarios/lista', ['middleware' => ['auth', 'admin'], 'uses' => 'Auth\AllController@list_auth']) -> name('user_list');
 });
 
-Route::get('{id}/editar', 'Auth\EditController@edit') -> name('user_edit');
-Route::put('{id}/atualizar', 'Auth\UpdateController@update') -> name('user_update');
+
 
 #Route::resource('voucher', 'Voucher\VoucherController');
-Route::get('voucher', 'Voucher\VoucherController@index') -> name('voucher_list_all');
-Route::get('voucher/chaves', 'Voucher\VoucherController@list_keys') -> name('voucher_list_keys');
+Route::get('voucher', 'Voucher\VoucherController@list_voucher') -> name('voucher_list_all');
+Route::get('voucher/chaves', 'Voucher\VoucherUserController@list_voucher_keys') -> name('voucher_list_keys');
+
 Route::get('voucher/adicionar', 'Voucher\VoucherController@create_voucher') -> name('voucher_list_add');
 Route::post('voucher/adicionar', 'Voucher\VoucherController@store_voucher') -> name('voucher_list_add_post');
 

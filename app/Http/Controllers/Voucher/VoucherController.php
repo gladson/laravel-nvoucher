@@ -19,40 +19,22 @@ class VoucherController extends Controller
     }
     
     
-    public function index()
+    public function list_voucher()
     {
         if (Auth::check() && Auth::user()->IsAdmin()) {
-            $vouchers = Voucher::all();
+            $vouchers = Voucher::orderBy('created_at', 'DESC')->get();
         } else {
             $id_user = Auth::user()->getId();
             //echo $id_user;
             //$vouchers = DB::table('voucher')->where('user_id', '=', $id_user)->get();
-            $vouchers = Voucher::where('user_id', '=', $id_user)->get();
+            $vouchers = Voucher::where('user_id', '=', $id_user)->orderBy('created_at', 'DESC')->get();
             //dd($vouchers);
             //echo $vouchers;
         }
         return view('voucher.list_all', compact('vouchers'));
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function list_keys()
-    {
-        if (Auth::check() && Auth::user()->IsAdmin()) {
-            $keys = VoucherUser::all();
-        } else {
-            $id_user = Auth::user()->getId();
-            //echo $id_user;
-            $keys = VoucherUser::where('user_id', '=', $id_user)->get();
-            //dd($keys);
-            //echo $keys;
-        }
-        return view('voucher.list_keys', compact('keys'));
-    }
-    /**
+     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -101,6 +83,17 @@ class VoucherController extends Controller
 
         return redirect()->route('voucher_list_add')->with('success','Voucher criado com sucesso!');
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function list_keys()
+    {
+        //
+    }
+   
 
     /**
      * Display the specified resource.

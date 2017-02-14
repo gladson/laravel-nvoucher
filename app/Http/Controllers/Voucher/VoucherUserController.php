@@ -6,6 +6,8 @@ use App\VoucherUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Auth;
+
 class VoucherUserController extends Controller
 {
     public function __construct()
@@ -18,9 +20,18 @@ class VoucherUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function list_voucher_keys()
     {
-        //
+        if (Auth::check() && Auth::user()->IsAdmin()) {
+            $keys = VoucherUser::orderBy('created_at', 'DESC')->get();
+        } else {
+            $id_user = Auth::user()->getId();
+            //echo $id_user;
+            $keys = VoucherUser::where('user_id', '=', $id_user)->orderBy('created_at', 'DESC')->get();
+            //dd($keys);
+            //echo $keys;
+        }
+        return view('voucher.list_keys', compact('keys'));
     }
 
     /**
