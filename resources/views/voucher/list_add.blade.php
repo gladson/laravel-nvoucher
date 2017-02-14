@@ -56,15 +56,15 @@
                 $('#data_fim_rp').val(s2);
 
                 console.log(s1);
-                var s1_moment = moment(s1, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
+                var s1_moment = moment(s1, 'dddd Do [de] MMM, YYYY - HH:mm[hs]').format('YYYY-MM-DD HH:mm:ss');
                 $('#data_inicio').val(s1_moment);
 
                 console.log(s2);
-                var s2_moment = moment(s2, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
+                var s2_moment = moment(s2, 'dddd Do [de] MMM, YYYY - HH:mm[hs]').format('YYYY-MM-DD HH:mm:ss');
                 $('#data_fim').val(s2_moment);
             },
-            //format: 'dddd Do MMM, YYYY - HH:mm[hs]',
-            format: 'D/MM/YYYY HH:mm:ss',
+            format: 'dddd Do [de] MMM, YYYY - HH:mm[hs]',
+            //format: 'D/MM/YYYY HH:mm:ss',
             time: {
                 enabled: true
             },

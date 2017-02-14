@@ -74,7 +74,7 @@ class VoucherController extends Controller
         $this->validate($request, [
             'desconto_valor' => 'required|numeric',
             'desconto_descricao' => 'required',
-            'data_inicio' => 'required|date',
+            'data_inicio' => 'required|date_format:"Y-m-d H:i:s"',
             'data_fim' => 'required|date'
         ]);
 
