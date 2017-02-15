@@ -48,10 +48,14 @@ Route::group(['middleware' => ['web']], function() {
 
 
 #Route::resource('voucher', 'Voucher\VoucherController');
-Route::get('voucher', 'Voucher\VoucherController@list_voucher') -> name('voucher_list_all');
+Route::get('voucher/lista', 'Voucher\VoucherController@list_voucher') -> name('voucher_list_all');
+Route::get('voucher/{id}/atualizar/status', 'Voucher\VoucherController@update_voucher') -> name('update_voucher');
 Route::get('voucher/chaves', 'Voucher\VoucherUserController@list_voucher_keys') -> name('voucher_list_keys');
 
 Route::get('voucher/adicionar', 'Voucher\VoucherController@create_voucher') -> name('voucher_list_add');
 Route::post('voucher/adicionar', 'Voucher\VoucherController@store_voucher') -> name('voucher_list_add_post');
+
+Route::get('voucher/lista/cupons', 'Voucher\VoucherUserController@create_voucher_keys') -> name('voucher_list_keys_add');
+Route::post('voucher/chaves/adicionar', 'Voucher\VoucherUserController@store_voucher_keys') -> name('voucher_list_keys_add_post');
 
 Route::get('/painel-de-controle', 'ControlpanelController@control_panel') -> name('control_panel');

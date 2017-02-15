@@ -124,9 +124,26 @@ class VoucherController extends Controller
      * @param  \App\Voucher  $voucher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Voucher $voucher)
+    public function update_voucher(Request $request, $id)
     {
-        //
+        $voucher = Voucher::findOrFail($id);
+
+        if ($voucher->status == 0) {
+            DB::table('voucher')
+            ->where('id', $id)
+            ->update([
+                'status' => '1'
+            ]);
+        } else {
+            DB::table('voucher')
+            ->where('id', $id)
+            ->update([
+                'status' => '0'
+            ]);
+        }
+
+        #return back()->with('success','Status atualizado com sucesso!');
+        return redirect()->route('voucher_list_all')->with('success','Status do usuário atualizado com sucesso!');
     }
 
     /**

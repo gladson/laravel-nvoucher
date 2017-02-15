@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Voucher;
 
+use App\Voucher;
 use App\VoucherUser;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -39,9 +41,18 @@ class VoucherUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create_voucher_keys()
     {
-        //
+        if (Auth::check() && Auth::user()->IsAdmin()) {
+            $keys = Voucher::orderBy('created_at', 'DESC')->get();
+        } else {
+            $id_user = Auth::user()->getId();
+            //echo $id_user;
+            $keys = Voucher::where('user_id', '=', $id_user)->orderBy('created_at', 'DESC')->get();
+            //dd($keys);
+            //echo $keys;
+        }
+        return view('voucher.list_keys_add', compact('keys'));
     }
 
     /**
@@ -50,7 +61,7 @@ class VoucherUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store_voucher_keys(Request $request)
     {
         //
     }

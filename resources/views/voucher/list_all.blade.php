@@ -43,6 +43,7 @@
                             @if (Auth::check() && Auth::user()->IsAdmin())
                             <th>Usuário</th>
                             @endif
+                            <th>Status</th>
                             <th>Data de inicio</th>
                             <th>Data do fim</th>
                         </tr>
@@ -71,6 +72,11 @@
                             <td>{{ $obj->user->name }}</td>
                             @endif
                             
+                            <td>
+                                <a href="{{ route('update_voucher', $obj->id) }}" class="btn btn-primary">
+                                     O
+                                </a>
+                            </td>
                             <td>
                                 {{ Carbon\Carbon::parse($obj->data_inicio)->format('d\\\m\\\Y\ - H:i:s') }}
                             </td>

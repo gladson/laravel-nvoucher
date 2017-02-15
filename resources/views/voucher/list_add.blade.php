@@ -55,11 +55,11 @@
                 $('#data_inicio_rp').val(s1);
                 $('#data_fim_rp').val(s2);
 
-                console.log(s1);
+                //console.log(s1);
                 var s1_moment = moment(s1, 'dddd Do [de] MMM, YYYY - HH:mm[hs]').format('YYYY-MM-DD HH:mm:ss');
                 $('#data_inicio').val(s1_moment);
 
-                console.log(s2);
+                //console.log(s2);
                 var s2_moment = moment(s2, 'dddd Do [de] MMM, YYYY - HH:mm[hs]').format('YYYY-MM-DD HH:mm:ss');
                 $('#data_fim').val(s2_moment);
             },
