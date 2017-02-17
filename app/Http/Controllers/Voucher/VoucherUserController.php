@@ -51,9 +51,24 @@ class VoucherUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store_voucher_keys(Request $request)
+    public function store_voucher_keys(Request $request, $id)
     {
-        //
+        $user_id = Auth::user()->getId();
+        $voucher_id = Voucher::findOrFail($id);
+
+        $create_voucher_keys = new VoucherUser();
+        $create_voucher_keys->chave = $chave;
+        $create_voucher_keys->user_id = $user_id;
+        $create_voucher_keys->voucher_id = $voucher_id;
+        $create_voucher_keys->status = '1';
+        $create_voucher_keys->save();
+        
+        #Aqui enviar email apos salvar objeto, logo apos redirecionar com a mensagem de sucesso;
+
+        #echo $create_voucher_keys;
+        #dd($create_voucher_keys);
+
+        return redirect()->route('voucher_list_keys_create')->with('success','Cupom criado com sucesso!');
     }
 
     /**

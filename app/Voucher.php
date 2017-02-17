@@ -15,6 +15,11 @@ class Voucher extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function getId()
+    {
+      return $this->id;
+    }
+
     /**
      * The attributes that are mass assignable.
      *
