@@ -23,7 +23,7 @@
             </div>
             <div class="col-md-5"></div>
             <div class="col-md-2" style="text-align: right;">
-                <!-- <a href="{{ route('voucher_list_keys_add') }}" class="btn btn-primary" style="margin-top: 22px;margin-bottom: 11px;">
+                <!-- <a href="{{ route('voucher_list_keys_create') }}" class="btn btn-primary" style="margin-top: 22px;margin-bottom: 11px;">
                     Add chaves voucher
                 </a> -->
             </div>

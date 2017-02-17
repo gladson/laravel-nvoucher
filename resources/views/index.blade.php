@@ -68,9 +68,9 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ route('voucher_list_keys_add') }}">Cupons</a>
                         <a href="{{ route('control_panel') }}">Painel de controle</a>                        
                     @else
+                        <a href="{{ route('voucher_list_keys_create') }}">Cupons</a>
                         <a href="{{ route('login') }}">Entrar</a>
                         <a href="{{ route('register') }}">Registrar</a>
                     @endif

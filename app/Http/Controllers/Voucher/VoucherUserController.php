@@ -12,10 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class VoucherUserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }    
 
     /**
      * Display a listing of the resource.
@@ -41,18 +37,12 @@ class VoucherUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create_voucher_keys()
+    public function list_create_voucher_keys()
     {
-        if (Auth::check() && Auth::user()->IsAdmin()) {
-            $keys = Voucher::orderBy('created_at', 'DESC')->get();
-        } else {
-            $id_user = Auth::user()->getId();
-            //echo $id_user;
-            $keys = Voucher::where('user_id', '=', $id_user)->orderBy('created_at', 'DESC')->get();
-            //dd($keys);
-            //echo $keys;
-        }
-        return view('voucher.list_keys_add', compact('keys'));
+
+        $keys = Voucher::orderBy('created_at', 'DESC')->get();
+
+        return view('voucher.list_keys_all', compact('keys'));
     }
 
     /**

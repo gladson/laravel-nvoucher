@@ -57,7 +57,9 @@
                         <li><a href="{{ route('login') }}">Login</a></li>
                         <li><a href="{{ route('register') }}">Registrar</a></li>
                         @else
-                            <li><a href="{{ route('voucher_list_keys_add') }}">Cupons</a></li>
+                            @if (Route::current()->getName() != 'voucher_list_keys_create')  
+                            <li><a href="{{ route('voucher_list_keys_create') }}">Cupons</a></li>
+                            @endif
                             @if (Route::current()->getName() != 'control_panel')  
                             <li><a href="{{ route('control_panel') }}">Painel De Controle</a></li>
                             @endif

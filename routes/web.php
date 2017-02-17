@@ -55,7 +55,7 @@ Route::get('voucher/chaves', 'Voucher\VoucherUserController@list_voucher_keys') 
 Route::get('voucher/adicionar', 'Voucher\VoucherController@create_voucher') -> name('voucher_list_add');
 Route::post('voucher/adicionar', 'Voucher\VoucherController@store_voucher') -> name('voucher_list_add_post');
 
-Route::get('voucher/lista/cupons', 'Voucher\VoucherUserController@create_voucher_keys') -> name('voucher_list_keys_add');
+Route::get('voucher/lista/cupons', 'Voucher\VoucherUserController@list_create_voucher_keys') -> name('voucher_list_keys_create');
 Route::post('voucher/chaves/adicionar', 'Voucher\VoucherUserController@store_voucher_keys') -> name('voucher_list_keys_add_post');
 
 Route::get('/painel-de-controle', 'ControlpanelController@control_panel') -> name('control_panel');
