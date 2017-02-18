@@ -72,10 +72,10 @@
                             @endif
                             
                             <td>
-                                {{ Carbon\Carbon::parse($obj->data_inicio)->format('d\\\m\\\Y\ - H:i:s') }}
+                                {{ Carbon\Carbon::parse($obj->voucher->data_inicio)->format('d\\\m\\\Y\ - H:i:s') }}
                             </td>
                             <td>
-                                {{ Carbon\Carbon::parse($obj->data_fim)->format('d\\\m\\\Y - H:i:s') }}
+                                {{ Carbon\Carbon::parse($obj->voucher->data_fim)->format('d\\\m\\\Y - H:i:s') }}
                             </td>
                         </tr>
                         @endforeach

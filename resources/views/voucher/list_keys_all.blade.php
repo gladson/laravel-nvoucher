@@ -125,6 +125,9 @@
     /*CUPON_ONE*/
     .cupom_one .title{
         background: #209352;
+        font-size: 30px;
+        margin-top: 22px;
+        margin-bottom: 11px;
     }
     .cupom_one .content,.cupom_one .pt-footer{
         background: #28B164;
@@ -168,6 +171,12 @@
                     {{ session('success') }}
                 </div>
             @endif
+            @if (session('danger'))
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ session('danger') }}
+                </div>
+            @endif
             <div class="pricing-table group">
                 @foreach ($keys as $obj)    
                 <div class="block @if ($obj->status == 1) cupom_one @else cupom_two @endif fl">
@@ -185,9 +194,13 @@
                         <p>{{ $obj->desconto_descricao }}</p>
                     </div>
                     @if ($obj->status == 1)
-                    <a href="{{ route('voucher_list_keys_add_post', $obj->id) }}">
-                        <h2 class="title">GERAR CUPOM</h2>
-                    </a>
+                    <form method="POST" action="{{ route('voucher_list_keys_add_post', $obj->id) }}">
+                        <input type="hidden" name="id" value="{{ $obj->id }}">
+                        {!! csrf_field() !!}
+                        <button type="submit" class="title btn-block">
+                            GERAR CUPOM
+                        </button>
+                    </form>
                     @else
                         <h2 class="title">FECHADO</h2>
                     @endif

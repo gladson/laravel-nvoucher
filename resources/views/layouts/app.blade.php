@@ -54,6 +54,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
+                        <li><a href="{{ route('voucher_list_keys_create') }}">Cupons</a></li>
                         <li><a href="{{ route('login') }}">Login</a></li>
                         <li><a href="{{ route('register') }}">Registrar</a></li>
                         @else

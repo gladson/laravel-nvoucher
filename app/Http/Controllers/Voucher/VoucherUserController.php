@@ -53,31 +53,40 @@ class VoucherUserController extends Controller
      */
     public function store_voucher_keys(Request $request, $id)
     {
-        $user_id = Auth::user()->getId();
-        $voucher_id = Voucher::findOrFail($id);
+        if (Auth::check()) {
+            $user_id = Auth::user()->getId();
+            $voucher_id = Voucher::findOrFail($id);
 
-        $keys_random_php = substr(md5(uniqid(mt_rand(1,6))), 0, 10);
-        $keys = VoucherUser::where('chave', '=', $keys_random_php)->count();
+            $keys_random_php = substr(md5(uniqid(mt_rand(1,6))), 0, 10);
+            $keys = VoucherUser::where('chave', '=', $keys_random_php)->count();
 
-        if ($keys > 0) {
-            $keys_create = substr(md5(uniqid(mt_rand(1,6))), 0, 10);
+            if ($keys > 0) {
+                $keys_create = substr(md5(uniqid(mt_rand(1,6))), 0, 10);
+            } else {
+                $keys_create = $keys_random_php;
+            }
+            
+            $create_voucher_keys = new VoucherUser();
+            $create_voucher_keys->chave = $keys_create;
+            $create_voucher_keys->user_id = $user_id;
+            $create_voucher_keys->voucher_id = $voucher_id->id;
+            $create_voucher_keys->status = 1;
+            $create_voucher_keys->save();
+
+            if (!$create_voucher_keys->save()) {
+                return redirect()->route('voucher_list_keys_create')->with('danger','Ocorreu um erro ao gerar cupom, desculpe!');
+            } else {
+                #Aqui enviar email apos salvar objeto, logo apos redirecionar com a mensagem de sucesso;
+            }
+
+            #echo $create_voucher_keys;
+            #dd($create_voucher_keys);
+
+            return redirect()->route('voucher_list_keys_create')->with('success','Cupom criado com sucesso!');
         } else {
-            $keys_create = $keys_random_php;
+            return redirect()->route('login')->with('warning', 'Efetue o Login ou <a href="registrar/">Registre-se</a> para gerar Cupons!');
         }
-        
-        $create_voucher_keys = new VoucherUser();
-        $create_voucher_keys->chave = $keys_create;
-        $create_voucher_keys->user_id = $user_id;
-        $create_voucher_keys->voucher_id = $voucher_id;
-        $create_voucher_keys->status = '1';
-        $create_voucher_keys->save();
-        
-        #Aqui enviar email apos salvar objeto, logo apos redirecionar com a mensagem de sucesso;
 
-        #echo $create_voucher_keys;
-        #dd($create_voucher_keys);
-
-        return redirect()->route('voucher_list_keys_create')->with('success','Cupom criado com sucesso!');
     }
 
     /**
