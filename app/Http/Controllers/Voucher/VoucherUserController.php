@@ -56,8 +56,17 @@ class VoucherUserController extends Controller
         $user_id = Auth::user()->getId();
         $voucher_id = Voucher::findOrFail($id);
 
+        $keys_random_php = substr(md5(uniqid(mt_rand(1,6))), 0, 10);
+        $keys = VoucherUser::where('chave', '=', $keys_random_php)->count();
+
+        if ($keys > 0) {
+            $keys_create = substr(md5(uniqid(mt_rand(1,6))), 0, 10);
+        } else {
+            $keys_create = $keys_random_php
+        }
+        
         $create_voucher_keys = new VoucherUser();
-        $create_voucher_keys->chave = $chave;
+        $create_voucher_keys->chave = $keys_create;
         $create_voucher_keys->user_id = $user_id;
         $create_voucher_keys->voucher_id = $voucher_id;
         $create_voucher_keys->status = '1';
