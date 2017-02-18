@@ -162,6 +162,12 @@
     </div>
     <div class="row">
         <div class="col-md-12">
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="pricing-table group">
                 @foreach ($keys as $obj)    
                 <div class="block @if ($obj->status == 1) cupom_one @else cupom_two @endif fl">
@@ -179,7 +185,7 @@
                         <p>{{ $obj->desconto_descricao }}</p>
                     </div>
                     @if ($obj->status == 1)
-                    <a href="#">
+                    <a href="{{ route('voucher_list_keys_add_post', $obj->id) }}">
                         <h2 class="title">GERAR CUPOM</h2>
                     </a>
                     @else

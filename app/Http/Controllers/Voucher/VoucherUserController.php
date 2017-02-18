@@ -62,7 +62,7 @@ class VoucherUserController extends Controller
         if ($keys > 0) {
             $keys_create = substr(md5(uniqid(mt_rand(1,6))), 0, 10);
         } else {
-            $keys_create = $keys_random_php
+            $keys_create = $keys_random_php;
         }
         
         $create_voucher_keys = new VoucherUser();
