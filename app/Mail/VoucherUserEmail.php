@@ -19,16 +19,17 @@ class VoucherUserEmail extends Mailable
      *
      * @var VoucherUser
      */
-    protected $voucher_user;
+    #protected $voucher_user;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($voucher_user)
+    public function __construct($voucher_user_key_create, $voucher_user_create)
     {
-        $this->voucher_user = $voucher_user;
+        $this->voucher_user_key_create = $voucher_user_key_create;
+        $this->voucher_user_create = $voucher_user_create;
     }
 
     /**
@@ -44,16 +45,18 @@ class VoucherUserEmail extends Mailable
         $address = 'no-rep@gladson.com.br';
         $name = 'Voucher';
         $subject = 'Cupom do desconto';
+        $chave = $this->voucher_user_key_create;
+        $nome = $this->voucher_user_create;
 
         return $this->view('emails.voucher_user_keys')
                     ->from($address, $name)
                     #->cc($address, $name)
                     #->bcc($address, $name)
                     #->replyTo($address, $name)
-                    ->subject($subject);
-                    #->with([
-                    #    'chave' =>  $this->voucher_user->chave,
-                    #    'nome' =>  $this->voucher_user->user->name,
-                    #]);
+                    ->subject($subject)
+                    ->with([
+                        'chave' =>  $chave,
+                        'nome' =>  $nome,
+                    ]);
     }
 }

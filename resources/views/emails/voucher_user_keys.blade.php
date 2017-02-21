@@ -202,7 +202,7 @@
             <tbody>
                 <tr>
                     <td bgcolor="#ffffff">
-                        <img src="https://placeholdit.imgix.net/~text?txtsize=150&bg=222222&txtclr=e8117f&txt={{ strtoupper ($voucher_user->chave) }}&w=1360&h=600&txttrack=0&fm=png" alt="alt_text" class="fluid" style="width: 100%; max-width: 680px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;"
+                        <img src="https://placeholdit.imgix.net/~text?txtsize=150&bg=222222&txtclr=e8117f&txt={{ strtoupper ($chave) }}&w=1360&h=600&txttrack=0&fm=png" alt="alt_text" class="fluid" style="width: 100%; max-width: 680px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;"
                         height="" border="0" align="middle" width="680">
                     </td>
                 </tr>
@@ -215,7 +215,7 @@
                             <tbody>
                                 <tr>
                                     <td style="padding: 20px; text-align: center; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
-                                        <img src="https://placeholdit.imgix.net/~text?txtsize=100&bg=222222&txtclr=e8117f&txt=Obrigado+{{ $voucher_user->user->name }}!&w=1360&h=200&txttrack=0&fm=png" alt="alt_text" class="fluid" style="width: 100%; max-width: 680px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;"
+                                        <img src="https://placeholdit.imgix.net/~text?txtsize=100&bg=222222&txtclr=e8117f&txt=Obrigado+{{ $nome }}!&w=1360&h=200&txttrack=0&fm=png" alt="alt_text" class="fluid" style="width: 100%; max-width: 680px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;"
                                         height="" border="0" align="middle" width="680">
                                         <img src="https://placeholdit.imgix.net/~text?txtsize=100&bg=222222&txtclr=555555&txt=Codigo+do+desconto+gerado+com+sucesso.&w=1360&h=200&txttrack=0&fm=png" alt="alt_text" class="fluid" style="width: 100%; max-width: 680px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;"
                                         height="" border="0" align="middle" width="680">

@@ -82,11 +82,12 @@ class VoucherUserController extends Controller
                 return redirect()->route('voucher_list_keys_create')->with('danger','Ocorreu um erro ao gerar cupom, desculpe!');
             } else {
                 #Aqui enviar email apos salvar objeto, logo apos redirecionar com a mensagem de sucesso;
-                $voucher_user = array(
-                    'chave'=>$keys_create,
-                    'nome'=>Auth::user()->getName()
-                );
-                \Mail::to($request->user())->send(new VoucherUserEmail($voucher_user) );
+                $voucher_user_key_create = $keys_create;
+                $voucher_user_create = Auth::user()->getName();
+
+                \Mail::to($request->user())->send(new VoucherUserEmail($voucher_user_key_create, $voucher_user_create) );
+
+                #Mail::send('emails.offerte_reactie', ['offerte' => $offerte, 'user' => $user, 'message_text' => $message_text], function ($message) use ($user,$offerte)
 
                 $request->session()->flash('success', 'Cupom criado e enviado por email com sucesso!');
                 return redirect()->route('voucher_list_keys_create');
