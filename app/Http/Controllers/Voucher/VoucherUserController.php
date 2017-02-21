@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Voucher;
 
 use App\Voucher;
 use App\VoucherUser;
+use App\Mail\VoucherUserEmail;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,11 +24,15 @@ class VoucherUserController extends Controller
         if (Auth::check() && Auth::user()->IsAdmin()) {
             $keys = VoucherUser::orderBy('created_at', 'DESC')->get();
         } else {
-            $id_user = Auth::user()->getId();
-            //echo $id_user;
-            $keys = VoucherUser::where('user_id', '=', $id_user)->orderBy('created_at', 'DESC')->get();
-            //dd($keys);
-            //echo $keys;
+            if (Auth::user()->getId() == null) {
+                return redirect()->route('login');
+            } else {
+                $id_user = Auth::user()->getId();
+                //echo $id_user;
+                $keys = VoucherUser::where('user_id', '=', $id_user)->orderBy('created_at', 'DESC')->get();
+                //dd($keys);
+                //echo $keys;
+            }
         }
         return view('voucher.list_keys', compact('keys'));
     }
@@ -77,12 +82,20 @@ class VoucherUserController extends Controller
                 return redirect()->route('voucher_list_keys_create')->with('danger','Ocorreu um erro ao gerar cupom, desculpe!');
             } else {
                 #Aqui enviar email apos salvar objeto, logo apos redirecionar com a mensagem de sucesso;
+                $voucher_user = array(
+                    'chave'=>$keys_create,
+                    'nome'=>Auth::user()->getName()
+                );
+                \Mail::to($request->user())->send(new VoucherUserEmail($voucher_user) );
+
+                $request->session()->flash('success', 'Cupom criado e enviado por email com sucesso!');
+                return redirect()->route('voucher_list_keys_create');
             }
 
             #echo $create_voucher_keys;
             #dd($create_voucher_keys);
 
-            return redirect()->route('voucher_list_keys_create')->with('success','Cupom criado com sucesso!');
+            #return redirect()->route('voucher_list_keys_create')->with('success','Cupom criado com sucesso!');
         } else {
             return redirect()->route('login')->with('warning', 'Efetue o Login ou <a href="registrar/">Registre-se</a> para gerar Cupons!');
         }
