@@ -19,7 +19,7 @@ class VoucherUserEmail extends Mailable
      *
      * @var VoucherUser
      */
-    #protected $voucher_user;
+    protected $voucher_user;
 
     /**
      * Create a new message instance.
@@ -40,7 +40,6 @@ class VoucherUserEmail extends Mailable
     public function build()
     {
         #return $this->view('emails.voucher_user_keys');
-        #return $this->from('no-rep@gladson.com.br')->subject('Voucher')->view('emails.voucher_user_keys');
 
         $address = 'no-rep@gladson.com.br';
         $name = 'Voucher';

@@ -21,11 +21,22 @@
             <div class="col-md-5">
                 <h1>Todas as chaves</h1>
             </div>
-            <div class="col-md-5"></div>
-            <div class="col-md-2" style="text-align: right;">
+            <div class="col-md-3"></div>
+            <div class="col-md-4" style="text-align: right;">
                 <!-- <a href="{{ route('voucher_list_keys_create') }}" class="btn btn-primary" style="margin-top: 22px;margin-bottom: 11px;">
                     Add chaves voucher
                 </a> -->
+                <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group" style="margin-top: 22px;margin-bottom: 11px;">
+                    <div class="btn-group" role="group"> 
+                        <button type="button" class="btn btn-default">Json</button> 
+                    </div> 
+                    <div class="btn-group" role="group"> 
+                        <button type="button" class="btn btn-default">Excel</button> 
+                    </div> 
+                    <div class="btn-group" role="group"> 
+                        <button type="button" class="btn btn-default">PDF</button> 
+                    </div> 
+                </div>
             </div>
         </div>
     </div>

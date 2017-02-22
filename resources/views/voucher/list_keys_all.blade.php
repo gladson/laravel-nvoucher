@@ -47,7 +47,7 @@
     }
     .block{
         width: 30%;    
-        margin: 0 15px;
+        margin: 0 10px;
         overflow: hidden;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
